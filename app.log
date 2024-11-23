@@ -1,0 +1,99 @@
+2024-11-23T18:16:55.052+05:30  INFO 12916 --- [springboot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Starting SpringbootApplication using Java 21.0.1 with PID 12916 (D:\NEW_GITHUB\JAVA\springboot\target\classes started by Derrick in D:\NEW_GITHUB\JAVA\springboot)
+2024-11-23T18:16:55.057+05:30  INFO 12916 --- [springboot] [restartedMain] c.j.spring_boot.SpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-23T18:16:55.190+05:30  INFO 12916 --- [springboot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-23T18:16:55.190+05:30  INFO 12916 --- [springboot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-23T18:16:57.514+05:30  INFO 12916 --- [springboot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-23T18:16:57.546+05:30  INFO 12916 --- [springboot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-23T18:16:57.547+05:30  INFO 12916 --- [springboot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-11-23T18:16:57.625+05:30  INFO 12916 --- [springboot] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-23T18:16:57.626+05:30  INFO 12916 --- [springboot] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2434 ms
+2024-11-23T18:16:58.213+05:30  INFO 12916 --- [springboot] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-11-23T18:16:58.261+05:30  WARN 12916 --- [springboot] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-11-23T18:16:58.299+05:30  INFO 12916 --- [springboot] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-11-23T18:16:58.334+05:30 ERROR 12916 --- [springboot] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-11-23T18:17:49.085+05:30  INFO 35388 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Starting SpringbootApplication using Java 21.0.1 with PID 35388 (D:\NEW_GITHUB\JAVA\springboot\target\classes started by Derrick in D:\NEW_GITHUB\JAVA\springboot)
+2024-11-23T18:17:49.089+05:30  INFO 35388 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-23T18:17:49.163+05:30  INFO 35388 --- [spring_boot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-23T18:17:49.163+05:30  INFO 35388 --- [spring_boot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-23T18:17:50.431+05:30  INFO 35388 --- [spring_boot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2024-11-23T18:17:50.451+05:30  INFO 35388 --- [spring_boot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-23T18:17:50.451+05:30  INFO 35388 --- [spring_boot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-11-23T18:17:50.499+05:30  INFO 35388 --- [spring_boot] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-23T18:17:50.499+05:30  INFO 35388 --- [spring_boot] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1335 ms
+2024-11-23T18:17:50.921+05:30  INFO 35388 --- [spring_boot] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-11-23T18:17:50.953+05:30  INFO 35388 --- [spring_boot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path '/'
+2024-11-23T18:17:50.963+05:30  INFO 35388 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Started SpringbootApplication in 2.602 seconds (process running for 3.224)
+2024-11-23T18:18:22.995+05:30  INFO 35388 --- [spring_boot] [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-23T18:18:22.995+05:30  INFO 35388 --- [spring_boot] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-23T18:18:22.995+05:30  INFO 35388 --- [spring_boot] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-11-23T18:18:23.086+05:30  INFO 35388 --- [spring_boot] [http-nio-9001-exec-1] c.j.s.controller.JavaController          : Name: world
+2024-11-23T18:18:43.902+05:30  INFO 35388 --- [spring_boot] [http-nio-9001-exec-5] c.j.s.controller.JavaController          : Name: world
+2024-11-23T18:19:18.617+05:30  INFO 35388 --- [spring_boot] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2024-11-23T18:19:18.622+05:30  INFO 35388 --- [spring_boot] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2024-11-23T18:19:23.330+05:30  INFO 35156 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Starting SpringbootApplication using Java 21.0.1 with PID 35156 (D:\NEW_GITHUB\JAVA\springboot\target\classes started by Derrick in D:\NEW_GITHUB\JAVA\springboot)
+2024-11-23T18:19:23.336+05:30  INFO 35156 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-23T18:19:23.422+05:30  INFO 35156 --- [spring_boot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-23T18:19:23.423+05:30  INFO 35156 --- [spring_boot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-23T18:19:25.090+05:30  INFO 35156 --- [spring_boot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2024-11-23T18:19:25.114+05:30  INFO 35156 --- [spring_boot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-23T18:19:25.116+05:30  INFO 35156 --- [spring_boot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-11-23T18:19:25.174+05:30  INFO 35156 --- [spring_boot] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-23T18:19:25.174+05:30  INFO 35156 --- [spring_boot] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1750 ms
+2024-11-23T18:19:25.933+05:30  INFO 35156 --- [spring_boot] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-11-23T18:19:26.004+05:30  INFO 35156 --- [spring_boot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path '/'
+2024-11-23T18:19:26.022+05:30  INFO 35156 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Started SpringbootApplication in 3.45 seconds (process running for 4.1)
+2024-11-23T18:19:34.064+05:30  INFO 35156 --- [spring_boot] [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-23T18:19:34.064+05:30  INFO 35156 --- [spring_boot] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-23T18:19:34.067+05:30  INFO 35156 --- [spring_boot] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-11-23T18:21:23.802+05:30  INFO 35156 --- [spring_boot] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2024-11-23T18:21:23.810+05:30  INFO 35156 --- [spring_boot] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2024-11-23T18:21:27.445+05:30  INFO 17356 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Starting SpringbootApplication using Java 21.0.1 with PID 17356 (D:\NEW_GITHUB\JAVA\springboot\target\classes started by Derrick in D:\NEW_GITHUB\JAVA\springboot)
+2024-11-23T18:21:27.450+05:30  INFO 17356 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-23T18:21:27.529+05:30  INFO 17356 --- [spring_boot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-23T18:21:27.529+05:30  INFO 17356 --- [spring_boot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-23T18:21:28.906+05:30  INFO 17356 --- [spring_boot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2024-11-23T18:21:28.923+05:30  INFO 17356 --- [spring_boot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-23T18:21:28.924+05:30  INFO 17356 --- [spring_boot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-11-23T18:21:28.970+05:30  INFO 17356 --- [spring_boot] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-23T18:21:28.970+05:30  INFO 17356 --- [spring_boot] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1441 ms
+2024-11-23T18:21:29.392+05:30  INFO 17356 --- [spring_boot] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-11-23T18:21:29.436+05:30  INFO 17356 --- [spring_boot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path '/'
+2024-11-23T18:21:29.448+05:30  INFO 17356 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Started SpringbootApplication in 2.668 seconds (process running for 3.305)
+2024-11-23T18:21:33.863+05:30  INFO 17356 --- [spring_boot] [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-23T18:21:33.863+05:30  INFO 17356 --- [spring_boot] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-23T18:21:33.866+05:30  INFO 17356 --- [spring_boot] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-11-23T18:23:37.152+05:30  INFO 17356 --- [spring_boot] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2024-11-23T18:23:37.159+05:30  INFO 17356 --- [spring_boot] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2024-11-23T18:23:39.636+05:30  INFO 12852 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Starting SpringbootApplication using Java 21.0.1 with PID 12852 (D:\NEW_GITHUB\JAVA\springboot\target\classes started by Derrick in D:\NEW_GITHUB\JAVA\springboot)
+2024-11-23T18:23:39.639+05:30  INFO 12852 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-23T18:23:39.709+05:30  INFO 12852 --- [spring_boot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-23T18:23:39.710+05:30  INFO 12852 --- [spring_boot] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-23T18:23:40.899+05:30  INFO 12852 --- [spring_boot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2024-11-23T18:23:40.917+05:30  INFO 12852 --- [spring_boot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-23T18:23:40.918+05:30  INFO 12852 --- [spring_boot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-11-23T18:23:40.970+05:30  INFO 12852 --- [spring_boot] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-23T18:23:40.970+05:30  INFO 12852 --- [spring_boot] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1259 ms
+2024-11-23T18:23:41.416+05:30  INFO 12852 --- [spring_boot] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-11-23T18:23:41.457+05:30  INFO 12852 --- [spring_boot] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path '/'
+2024-11-23T18:23:41.468+05:30  INFO 12852 --- [spring_boot] [restartedMain] c.j.spring_boot.SpringbootApplication    : Started SpringbootApplication in 2.49 seconds (process running for 3.128)
+2024-11-23T18:23:47.094+05:30  INFO 12852 --- [spring_boot] [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-23T18:23:47.094+05:30  INFO 12852 --- [spring_boot] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-23T18:23:47.096+05:30  INFO 12852 --- [spring_boot] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-11-23T18:23:47.144+05:30 TRACE 12852 --- [spring_boot] [http-nio-9001-exec-1] c.j.s.controller.JavaController          : Name: world
+2024-11-23T18:24:16.294+05:30  INFO 12852 --- [spring_boot] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2024-11-23T18:24:16.300+05:30  INFO 12852 --- [spring_boot] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
