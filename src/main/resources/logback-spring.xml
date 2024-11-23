@@ -1,0 +1,26 @@
+<configuration>
+
+    <springProperty scope="context" name="region" source="app.region"
+                    defaultValue="us-east-1" />
+    <property name="LOG_FILE" value="${region}-myapp.log" />
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+
+    <springProfile name="local">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+    <springProfile name="!local">
+        <root level="INFO">
+            <appender-ref ref="FILE" />
+        </root>
+    </springProfile>
+
+    <logger name="com.java.spring_boot" level="DEBUG" />
+    <logger name="org.springframework" level="INFO" />
+
+</configuration>
