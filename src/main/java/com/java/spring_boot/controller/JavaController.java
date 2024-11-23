@@ -17,7 +17,11 @@ public class JavaController {
 
     @GetMapping("/hello")
     public Map<String,String> helloPage(@RequestParam(defaultValue = "world")String start) {
-        logger.trace("Name: {}",start);
+        logger.info("started the hello method: {}",start);
+        if(logger.isDebugEnabled()) {
+            // if you are printing obj that's waste of memory
+            logger.trace("Name: {}",start);
+        }
         return Map.of("greeting","Hello "+start);
     }
 }
