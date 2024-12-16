@@ -1,6 +1,4 @@
 package helloworld.dao;
-
-import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -11,161 +9,140 @@ import software.amazon.awssdk.services.dynamodb.model.*;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 
 public class SchoolDao {
-
-    private String tableName = "Student";
     private final DynamoDbClient dynamoDbClient;
+    private static final Logger logger = LoggerFactory.getLogger(SchoolDao.class);
 
     public SchoolDao(DynamoDbClient dynamoDbClient) {
         this.dynamoDbClient = dynamoDbClient;
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(SchoolDao.class);
-
-    /*
-     * curd operations in dynamoDB
-     * 1. create Item in DB
-     * 2. Read Item from DB
-     * 3. update Item in DB
-     * 4. Delete Item from DB
-     */
-
-     // 1. Create Item
-     public String createItem(String tableName,Student std) {
-        if(tableName == null || tableName.isEmpty()) {
-            throw new NullPointerException("Table name is empty or null");
-        } else {
-            this.tableName = tableName;
+    // 1. Create Item
+    public String createItem(String tableName, Student student) {
+        if (tableName == null || tableName.isEmpty()) {
+            throw new IllegalArgumentException("Table name is empty or null");
         }
-        try{
+        try {
             PutItemRequest putItemRequest = PutItemRequest.builder()
                 .tableName(tableName)
                 .item(Map.of(
-                    "id",AttributeValue.builder().s(std.getId()).build(),
-                    "name",AttributeValue.builder().s(std.getName()).build(),
-                    "age",AttributeValue.builder().n(String.valueOf(std.getAge())).build(),
-                    "grade",AttributeValue.builder().s(std.getGrade()).build()
-                )) .build();
+                    "student_id", AttributeValue.builder().s(student.getId()).build(),
+                    "std_name", AttributeValue.builder().s(student.getName()).build(),
+                    "std_age", AttributeValue.builder().n(String.valueOf(student.getAge())).build(),
+                    "std_grade", AttributeValue.builder().s(student.getGrade()).build()
+                ))
+                .build();
 
             PutItemResponse response = dynamoDbClient.putItem(putItemRequest);
-            logger.info("Item created successfully: {}" , response);
-
-             return "Added successfully . Http status code : "+response.sdkHttpResponse().statusCode();
-
+            logger.info("Item created successfully: {}", response);
+            return "Added successfully. HTTP status code: " + response.sdkHttpResponse().statusCode();
         } catch (DynamoDbException e) {
-            logger.error("creating Item in create student has DBException: {}", e.getMessage());
+            logger.error("DynamoDBException while creating item: {}", e.getMessage());
             return "Failed to add item. Error: " + e.getMessage();
-        } catch (Exception e) {
-            logger.error("Error creating Item in create student : {}", e.getMessage());
-            e.printStackTrace();
-            return "An unexpected error occured in createItem "+e.getMessage();
         }
-      }
+    }
 
-      // 2. Read Item
-      public String readItem(String tableName , String id) {
-        if(tableName == null || tableName.isEmpty()) {
-            throw new NullPointerException("Table name is empty or null");
-        } else {
-            this.tableName = tableName;
+    // 2. Read Item using Query by student Id based
+    public String readItem(String tableName, String studentId) {
+        if (tableName == null || tableName.isEmpty()) {
+            throw new IllegalArgumentException("Table name is empty or null");
         }
 
         try {
-            GetItemRequest getItemRequest = GetItemRequest.builder()
-                 .tableName(tableName)
-                 .key(Map.of("id",AttributeValue.builder().s(id).build()))
-                 .build();
+            Map<String, AttributeValue> expressionAttributeValues = Map.of(
+                ":v_student_id", AttributeValue.builder().s(studentId).build()
+            );
 
-                 GetItemResponse getItemResponse = dynamoDbClient.getItem(getItemRequest);
-                 if(getItemResponse.hasItem()) {
-                    //String data = getItemResponse.item().get("data").s();
-                    Map<String, AttributeValue> item = getItemResponse.item();
+            QueryRequest queryRequest = QueryRequest.builder()
+                .tableName(tableName)
+                .keyConditionExpression("student_id = :v_student_id")
+                .expressionAttributeValues(expressionAttributeValues)
+                .build();
+
+            QueryResponse queryResponse = dynamoDbClient.query(queryRequest);
+
+            if (!queryResponse.items().isEmpty()) {
+                StringBuilder result = new StringBuilder("Student data found:\n");
+                for (Map<String, AttributeValue> item : queryResponse.items()) {
                     Student student = new Student();
-                    student.setId(item.get("id").s());
-                    student.setName(item.get("name").s());
-                    student.setAge((int) Long.parseLong(item.get("age").n()));
-                    student.setGrade(item.get("grade").s());
+                    student.setId(item.get("student_id").s());
+                    student.setName(item.get("std_name").s());
+                    student.setAge(Integer.parseInt(item.get("std_age").n()));
+                    student.setGrade(item.get("std_grade").s());
+                    result.append(student.toString()).append("\n");
                     logger.info("Item Found: {}", student.getName());
-                    return "Student Data : "+student.getName();
-                 } else {
-                    logger.error("Item Not Found");
-                    return "Error getting data status code :" + getItemResponse.sdkHttpResponse().statusCode();
-                 }
-
+                }
+                return result.toString();
+            } else {
+                logger.error("No item found for student_id: {}", studentId);
+                return "No student found for student_id: " + studentId;
+            }
         } catch (DynamoDbException e) {
-            logger.error("creating Item in create student has DBException: {}", e.getMessage());
-            return "Failed to read item. Error: " + e.getMessage();
-        } catch(Exception e) {
-            logger.error("Error reading item from DynamoDB: {}", e.getMessage());
-            e.printStackTrace();
-            return "An unexpected error occured in readItem "+e.getMessage();
+            logger.error("Error querying items from DynamoDB: {}", e.getMessage());
+            return "Failed to query items. Error: " + e.getMessage();
         }
-      }
-     // 3. Update Item
-      public String updateItem (String tableName, Student student) {
+    }
 
-        if(tableName == null || tableName.isEmpty()) {
-            throw new NullPointerException("Table name is empty or null");
-        } else {
-            this.tableName = tableName;
+    // 3. Update Item
+    public String updateItem(String tableName, Student student) {
+        if (tableName == null || tableName.isEmpty()) {
+            throw new IllegalArgumentException("Table name is empty or null");
         }
+
         try {
-            Map<String, AttributeValueUpdate> updates = new HashMap<>();
-            updates.put("name", AttributeValueUpdate.builder()
-                    .value(AttributeValue.builder().s(student.getName()).build())
+            Map<String, AttributeValue> key = Map.of(
+                "student_id", AttributeValue.builder().s(student.getId()).build(),
+                "std_name", AttributeValue.builder().s(student.getName()).build()
+            );
+
+            Map<String, AttributeValueUpdate> updates = Map.of(
+                "std_age", AttributeValueUpdate.builder()
+                    .value(AttributeValue.builder().n(String.valueOf(student.getAge())).build())
                     .action(AttributeAction.PUT)
-                    .build());
-            updates.put("age", AttributeValueUpdate.builder()
-                    .value(AttributeValue.builder().n(
-                            String.valueOf(student.getAge())).build())
-                    .action(AttributeAction.PUT)
-                    .build());
-            updates.put("grade", AttributeValueUpdate.builder()
+                    .build(),
+                "std_grade", AttributeValueUpdate.builder()
                     .value(AttributeValue.builder().s(student.getGrade()).build())
                     .action(AttributeAction.PUT)
-                    .build());
+                    .build()
+            );
 
             UpdateItemRequest updateItemRequest = UpdateItemRequest.builder()
-                     .tableName(tableName)
-                     .key(Map.of("id",AttributeValue.builder().s(student.getId()).build()))
-                    //  .updateExpression("SET data = :newValue")
-                    //  .expressionAttributeValues(Map.of("newValue",AttributeValue.builder().s(newValue).build()))
-                     .attributeUpdates(updates)
-                     .build();
+                .tableName(tableName)
+                .key(key)
+                .attributeUpdates(updates)
+                .build();
 
-            UpdateItemResponse updateResponse = dynamoDbClient.updateItem(updateItemRequest);
-            logger.info("Item updated successfully: {}", updateResponse.sdkHttpResponse().statusCode());
-            return "updated the Item : "+updateResponse.sdkHttpResponse().statusCode();
-
+            UpdateItemResponse response = dynamoDbClient.updateItem(updateItemRequest);
+            logger.info("Item updated successfully: {}", response.sdkHttpResponse().statusCode());
+            return "Updated the item. HTTP status code: " + response.sdkHttpResponse().statusCode();
         } catch (DynamoDbException e) {
             logger.error("Error updating item in DynamoDB: {}", e.getMessage());
-            e.printStackTrace();
             return "Failed to update item. Error: " + e.getMessage();
-        } catch(Exception e) {
-            logger.error("Error updating item from DynamoDB: {}", e.getMessage());
-            e.printStackTrace();
-            return "An unexpected error occured in readItem "+e.getMessage();
         }
+    }
 
-      }
-
-      // 4. Delete Item
-      public String deleteItem(String tableName, String id) {
+    // 4. Delete Item
+    public String deleteItem(String tableName, String studentId, String stdName) {
+        if (tableName == null || tableName.isEmpty()) {
+            throw new IllegalArgumentException("Table name is empty or null");
+        }
 
         try {
+            Map<String, AttributeValue> key = Map.of(
+                "student_id", AttributeValue.builder().s(studentId).build(),
+                "std_name", AttributeValue.builder().s(stdName).build()
+            );
+
             DeleteItemRequest deleteItemRequest = DeleteItemRequest.builder()
-                  .tableName(tableName)
-                  .key(Map.of("id",AttributeValue.builder().s(id).build()))
-                  .build();
+                .tableName(tableName)
+                .key(key)
+                .build();
 
-                  DeleteItemResponse deleteResponse = dynamoDbClient.deleteItem(deleteItemRequest);
-                  logger.info("Item is deleted: {}" ,deleteResponse);
-                  return "Deleted the Item :"+id;
-
+            DeleteItemResponse response = dynamoDbClient.deleteItem(deleteItemRequest);
+            logger.info("Item deleted successfully: {}", response);
+            return "Deleted the item. HTTP status code: " + response.sdkHttpResponse().statusCode();
         } catch (DynamoDbException e) {
             logger.error("Error deleting item from DynamoDB: {}", e.getMessage());
-            e.printStackTrace();
             return "Failed to delete item. Error: " + e.getMessage();
         }
-      }
-
+    }
 }
